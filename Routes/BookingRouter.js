@@ -144,7 +144,7 @@ bookingRouter.get(
   "/getByDate",
   protect,
   asyncHandler(async (req, res) => {
-    const d = req.query.d;
+    const date = req.body.date;
     var tables = [];
 
     const bookings = await Booking.find({ date: d });
