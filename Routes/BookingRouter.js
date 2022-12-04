@@ -5,6 +5,7 @@ import Booking from "../Models/BookingModel.js";
 import Table from "../Models/TableModel.js";
 
 const bookingRouter = express.Router();
+if (!mongoose.Types.ObjectId.isValid(id)) return false;
 
 //CREATE BOOKING
 bookingRouter.post(
