@@ -141,10 +141,10 @@ bookingRouter.get(
 
 //GET BY DATE TIME
 bookingRouter.get(
-  "/date/:date",
+  "/date",
   protect,
   asyncHandler(async (req, res) => {
-    const date = req.params.date;
+    const date = req.query.date;
     var tables = [];
 
     const bookings = await Booking.find({ date: date }).sort({ _id: -1 });
