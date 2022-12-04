@@ -2,6 +2,7 @@ import express from "express";
 import asyncHandler from "express-async-handler";
 import { admin, owners, protect } from "../Middleware/AuthMiddleware.js";
 import Booking from "../Models/BookingModel.js";
+import Table from "../Models/TableModel.js";
 
 const bookingRouter = express.Router();
 
@@ -135,6 +136,24 @@ bookingRouter.get(
       .skip(pageSize * (page - 1))
       .sort({ _id: -1 });
     res.json({ bookings, page });
+  })
+);
+
+//GET BY DATE TIME
+bookingRouter.get(
+  "date",
+  protect,
+  asyncHandler(async (req, res) => {
+    const date = req.query.date;
+    var tables = [];
+
+    const bookings = await Booking.find({ date: date }).sort({ _id: -1 });
+    bookings.forEach(async (e) => {
+      var table = await Table.findById(e.table_id);
+      tables.push(table);
+    });
+
+    res.json(tables);
   })
 );
 
