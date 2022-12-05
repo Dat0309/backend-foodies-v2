@@ -141,7 +141,7 @@ bookingRouter.get(
 
 //GET BY DATE TIME
 bookingRouter.get(
-  "/getByDate",
+  "/date",
   protect,
   asyncHandler(async (req, res) => {
     const date = req.body.date;
