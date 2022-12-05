@@ -147,7 +147,7 @@ bookingRouter.get(
     const date = req.body.date;
     var tables = [];
 
-    const bookings = await Booking.find({ date: "30/09/2022" });
+    const bookings = await Booking.find({});
     // .then(
     //   (result) => {
     //     result.forEach(async (e) => {
