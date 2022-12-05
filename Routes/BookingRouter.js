@@ -146,16 +146,16 @@ bookingRouter.get(
   asyncHandler(async (req, res) => {
     const date = req.body.date;
     var tables = [];
-    var data;
+    var table;
 
     const bookings = await Booking.find({ date: "30/09/2022" });
     bookings.forEach(async (e) => {
       data = e.table_id;
-      // var table = await Table.findById(e.table_id);
+      table = await Table.findById(e.table_id);
       // tables.push(table);
     });
 
-    res.json({ bookings, tables, data });
+    res.json({ bookings, tables, table });
   })
 );
 
