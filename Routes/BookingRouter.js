@@ -151,7 +151,7 @@ bookingRouter.get(
     bookings.forEach(async (e) => {
       var table = await Table.findById(e.table_id);
       tables.push(table);
-      res.json({ bookings, tables });
+      res.json({ tables });
     });
   })
 );
