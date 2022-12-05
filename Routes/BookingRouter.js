@@ -151,10 +151,9 @@ bookingRouter.get(
     const bookings = await Booking.find({ date: "30/09/2022" });
     bookings.forEach(async (e) => {
       table = await Table.findById(e.table_id);
-      // tables.push(table);
+      tables.push(table);
+      res.json({ bookings, tables, table });
     });
-
-    res.json({ bookings, tables, table });
   })
 );
 
