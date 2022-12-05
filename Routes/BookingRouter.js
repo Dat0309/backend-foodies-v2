@@ -149,7 +149,8 @@ bookingRouter.get(
     var tables = [];
 
     const bookings = await Booking.find({
-      $and: [{ date: date }, { restaurant_id: id }],
+      restaurant_id: id,
+      date: date,
     });
     bookings.forEach(async (e) => {
       var table = await Table.findById(e.table_id);
