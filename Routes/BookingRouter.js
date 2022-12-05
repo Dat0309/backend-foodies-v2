@@ -147,12 +147,14 @@ bookingRouter.get(
     const date = req.body.date;
     var tables = [];
 
-    await Booking.find({ date: "30/09/2022" }).then((result) => {
-      result.forEach(async (e) => {
-        var table = await Table.findById(e.table_id);
-        tables.push(table);
-      });
-    });
+    const bookings = await Booking.find({ date: "30/09/2022" }).then(
+      (result) => {
+        result.forEach(async (e) => {
+          var table = await Table.findById(e.table_id);
+          tables.push(table);
+        });
+      }
+    );
 
     res.json(tables);
   })
