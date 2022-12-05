@@ -147,7 +147,9 @@ bookingRouter.get(
     const date = req.body.date;
     var tables = [];
 
-    const bookings = await Booking.find({});
+    const bookings = await Booking.find({})
+      .sort({ _id: -1 })
+      .populate("user_id", "id name email");
     // .then(
     //   (result) => {
     //     result.forEach(async (e) => {

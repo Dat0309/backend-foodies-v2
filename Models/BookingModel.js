@@ -46,7 +46,7 @@ const bookingSchema = mongoose.Schema(
     payment_method: {
       type: String,
       required: true,
-      default: "Paypal",
+      default: "Thanh toán khi nhận hàng",
     },
     payment_result: {
       id: {
