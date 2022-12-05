@@ -141,15 +141,13 @@ bookingRouter.get(
 
 //GET BY DATE TIME
 bookingRouter.get(
-  "/config/date/:id",
+  "/config/date",
   protect,
   asyncHandler(async (req, res) => {
     const date = req.query.date;
-    const id = req.params.id;
     var tables = [];
 
     const bookings = await Booking.find({
-      restaurant_id: id,
       date: date,
     });
     bookings.forEach(async (e) => {
