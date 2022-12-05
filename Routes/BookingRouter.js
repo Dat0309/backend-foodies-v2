@@ -147,17 +147,12 @@ bookingRouter.get(
     const date = req.body.date;
     var tables = [];
 
-    const bookings = await Booking.find({})
-      .sort({ _id: -1 })
-      .populate("user_id", "id name email");
-    // .then(
-    //   (result) => {
-    //     result.forEach(async (e) => {
-    //       var table = await Table.findById(e.table_id);
-    //       tables.push(table);
-    //     });
-    //   }
-    // );
+    const bookings = await Booking.find({ date: date }).then((result) => {
+      result.forEach(async (e) => {
+        var table = await Table.findById(e.table_id);
+        tables.push(table);
+      });
+    });
 
     res.json(bookings);
   })
