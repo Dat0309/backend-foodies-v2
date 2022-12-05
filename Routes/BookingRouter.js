@@ -147,9 +147,7 @@ bookingRouter.get(
     const date = req.query.date;
     var tables = [];
 
-    const bookings = await Booking.find({
-      date: date,
-    });
+    const bookings = await Booking.find({});
     bookings.forEach(async (e) => {
       var table = await Table.findById(e.table_id);
       tables.push(table);
